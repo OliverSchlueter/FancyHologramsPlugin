@@ -46,11 +46,6 @@ public final class Hologram1_20_2 extends Hologram {
     }
 
     @Override
-    public @Nullable org.bukkit.entity.Display getDisplayEntity() {
-        return display != null ? (org.bukkit.entity.Display) display.getBukkitEntity() : null;
-    }
-
-    @Override
     public void create() {
         final var location = data.getLocation();
         if (!location.isWorldLoaded()) {
