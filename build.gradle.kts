@@ -63,20 +63,21 @@ dependencies {
     implementation(project(":implementation_1_20_1", configuration = "reobf"))
     implementation(project(":implementation_1_19_4", configuration = "reobf"))
 
-    implementation("de.oliver:FancyLib:33")
+    implementation("de.oliver:FancyLib:35")
     implementation("de.oliver:FancySitula:0.0.13")
     implementation("de.oliver.FancyAnalytics:api:0.1.6")
     implementation("de.oliver.FancyAnalytics:logger:0.0.6")
 
     compileOnly("de.oliver:FancyNpcs:2.4.1")
     compileOnly("org.lushplugins:ChatColorHandler:5.1.0")
+    compileOnly("com.viaversion:viaversion-api:5.2.0")
     compileOnly("org.geysermc.floodgate:api:2.2.3-SNAPSHOT")
 }
 
 paper {
-    main = "de.oliver.fancyholograms.FancyHolograms"
-    bootstrapper = "de.oliver.fancyholograms.loaders.FancyHologramsBootstrapper"
-    loader = "de.oliver.fancyholograms.loaders.FancyHologramsLoader"
+    main = "de.oliver.fancyholograms.main.FancyHologramsPlugin"
+    bootstrapper = "de.oliver.fancyholograms.main.FancyHologramsBootstrapper"
+    loader = "de.oliver.fancyholograms.main.FancyHologramsLoader"
     foliaSupported = true
     version = rootProject.version.toString()
     description = "Simple, lightweight and fast hologram plugin using display entities"
@@ -96,6 +97,11 @@ paper {
             load = PaperPluginDescription.RelativeLoadOrder.BEFORE
         }
         register("floodgate") {
+            required = false
+            load = PaperPluginDescription.RelativeLoadOrder.BEFORE
+            joinClasspath = true
+        }
+        register("ViaVersion") {
             required = false
             load = PaperPluginDescription.RelativeLoadOrder.BEFORE
             joinClasspath = true
